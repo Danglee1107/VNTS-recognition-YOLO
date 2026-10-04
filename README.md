@@ -1,3 +1,8 @@
+# Introduction
+This project recognize Vietnam traffic using YOLO26
+
+---
+# Packages requirment
 | Library | Details |
 |---|---|
 | `ultralytics` | **YOLO** — training, detection, validation, inference |
@@ -9,3 +14,10 @@
 | `pillow` | Image manipulation/loading |
 | `pyyaml` | YOLO dataset configuration (`data.yaml`) |
 | `tqdm` | Progress bars |
+
+Download and setup manually or copy this line:
+```bash 
+git clone https://github.com/Danglee1107/VNTS-recognition-YOLO.git
+cd VNTS-recognition-YOLO
+uv sync 
+```

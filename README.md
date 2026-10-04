@@ -23,16 +23,17 @@ cd VNTS-recognition-YOLO
 uv sync 
 ```
 
-## Run the image demo
+## Run the full pipeline
 
-Start the Streamlit app from the project root:
+From the project root, run one command to train, save the best checkpoint,
+evaluate it on the held-out test split, and start the Streamlit demo:
 
 ```bash
-uv run streamlit run src/demo/app.py
+uv run python run.py
 ```
 
-Upload a JPG, PNG, WEBP, or BMP image. The app displays detected traffic-sign
-labels, confidence scores, and annotated bounding boxes, or reports when no
-signs are detected. The default checkpoint is
-`weights/vnts-yolo26n-best.pt`; set `VNT_MODEL_PATH` to use a checkpoint stored
-at a different path.
+Training defaults to 100 epochs. Use `--epochs`, `--batch`, `--device`, or
+`--imgsz` to change training/evaluation settings. To use the existing checkpoint
+without retraining, run `uv run python run.py --skip-train`. Add `--no-demo` to
+finish after evaluation, or `--skip-eval` to go directly from training to the
+demo. Streamlit remains running in the terminal until stopped with Ctrl+C.

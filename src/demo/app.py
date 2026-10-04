@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -11,9 +12,13 @@ from PIL import Image
 from ultralytics import YOLO
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_WEIGHTS = PROJECT_ROOT / "weights" / "vnts-yolo26n-best.pt"
-MODEL_PATH = Path(os.getenv("VNT_MODEL_PATH", str(DEFAULT_WEIGHTS))).expanduser()
+SRC_DIR = Path(__file__).resolve().parents[1]
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
+from config.path import SAVED_MODEL_WEIGHTS  # noqa: E402
+
+MODEL_PATH = Path(os.getenv("VNT_MODEL_PATH", str(SAVED_MODEL_WEIGHTS))).expanduser()
 
 st.set_page_config(
     page_title="VNTS · Traffic Sign Recognition",
